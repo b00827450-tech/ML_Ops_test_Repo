@@ -56,7 +56,11 @@ git remote add origin <repository_url>
 ```
 
 ## **6. Create Branch**
+```
 git branch <branch_name>
+```
 
 ## **7. Switch Branch**
+```
 git checkout <branch_name>
+```
