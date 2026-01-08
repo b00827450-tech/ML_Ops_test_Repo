@@ -47,10 +47,6 @@ Example:
 git push origin main
 ```
 
-***
-
-✅ **Tip:** Before pushing, make sure you’ve set up your remote:
-
 ```bash
 git remote add origin <repository_url>
 ```
