@@ -1,7 +1,7 @@
 # ML_Ops_test_Repo
 Test the foundamental functions of github
 
-Here are the **basic Git command lines** for working with GitHub:
+**Only learning basic commands, nothing more**
 
 ## **1. Clone a Repository**
 
@@ -45,10 +45,6 @@ Example:
 
 ```bash
 git push origin main
-```
-
-```bash
-git remote add origin <repository_url>
 ```
 
 ## **6. Create Branch**
