@@ -1,25 +1,26 @@
-from fastapi import FastAPI, Form
+from fastapi import FastAPI, Form, Request
 from fastapi.responses import HTMLResponse
 from model_flight_price import get_price
+from fastapi.templating import Jinja2Templates
 import re
+import uvicorn
 
 app = FastAPI()
+templates = Jinja2Templates(directory="templates")
 
-# 1. Shows the "Box" (HTML Form)
+# fillin a flight number in a box 
 @app.get("/", response_class=HTMLResponse)
-def get_flight():
-    return """
-    <form action="/check" method="post">
-        <input type="text" name="flight_num" placeholder="Enter Flight Number">
-        <button type="submit">Submit</button>
-    </form>
-    """
+def get_flight(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
 
-# 2. Handles the Input
+# get the filled flight number and get the price
 @app.post("/check")
 def flight_num_val(flight_num: str = Form(...)):
-    # I fixed the regex syntax from your original code (d -> \d)
+    # a alphabet and 3 digits
     if re.match(r"^[A-Za-z]\d{3}$", flight_num):
         return get_price(flight_num)
     else:
         return "Please input in right format"
+    
+if __name__ == "__main__":
+    uvicorn.run(app, host="127.0.0.1", port=8000)
